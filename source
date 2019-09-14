@@ -1,0 +1,30 @@
+import java.util.*; 
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int result = nums[0];
+        
+        HashMap <Integer, Integer> amounts = new HashMap <Integer, Integer>(); 
+        
+        for (int i = 0; i < nums.length; i++) {
+            
+           if (amounts.containsKey(nums[i])){
+               amounts.put(nums[i], amounts.get(nums[i]) +1);
+           }
+           else {
+               amounts.put(nums[i], 1);
+           } 
+        }
+        //System.out.println (amounts);
+        
+        
+        for (Integer key : amounts.keySet()) {
+            if (amounts.get(key) <= nums.length / 2 ) {
+                continue;
+            } 
+            result = key;
+        }
+        return result;
+
+    }
+}
